@@ -72,11 +72,20 @@ export class WizardView extends localize(i18next)(LitElement) {
     }
     this.current?.toggleAttribute('active', true)
 
-    var idx = this.getChildIndex(this.current)
+    var index = this.getChildIndex(this.current)
 
-    this.prev = this.current?.getAttribute('prev') || this.querySelector(`:nth-child(${idx})`)
-    this.next = this.current?.getAttribute('next') || this.querySelector(`:nth-child(${idx + 2})`)
+    this.prev = this.current?.getAttribute('prev') || this.querySelector(`:nth-child(${index})`)
+    this.next = this.current?.getAttribute('next') || this.querySelector(`:nth-child(${index + 2})`)
     this.done = this.current?.done
+
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: {
+          index,
+          active: this.current
+        }
+      })
+    )
   }
 
   render() {

@@ -32,23 +32,27 @@ class HandEyeCalibration extends connect(store)(PageView) {
         padding: 130px 0 0 0;
         color: var(--wizard-headline-color, #4c526b);
       }
+
       p {
         margin-top: 0;
         color: var(--wizard-headline-description-color, #6e7ebd);
         font-size: 13px;
       }
+
       ol {
         text-align: left;
         list-style: outside none none;
         counter-reset: big-numba;
         padding: 0;
       }
+
       li {
         list-style: outside none none;
         padding: 9px;
         color: var(--wizard-step-color, #4c526b);
         font-size: 16px;
       }
+
       li::before {
         content: counter(big-numba, decimal);
         counter-increment: big-numba;
@@ -63,15 +67,18 @@ class HandEyeCalibration extends connect(store)(PageView) {
         text-align: center;
         font-size: var(--wizard-step-number-size, 17px);
       }
+
       li[active] {
         color: var(--wizard-step-active-color, #6e7ebd);
         font-weight: bold;
       }
+
       li[active]::before {
         background-color: var(--wizard-step-active-color, #6e7ebd);
         border-color: var(--wizard-step-active-color, #6e7ebd);
         color: #fff;
       }
+
       li[active]::after {
         content: '>';
         margin-left: 5px;
@@ -85,7 +92,9 @@ class HandEyeCalibration extends connect(store)(PageView) {
   }
 
   static get properties() {
-    return {}
+    return {
+      current: String
+    }
   }
 
   render() {
@@ -94,14 +103,14 @@ class HandEyeCalibration extends connect(store)(PageView) {
         <h2>Hand-Eye Calibration</h2>
         <p>Configure the position and orientation of your 3D sensors to work with Operato</p>
         <ol>
-          <li>Global Setting</li>
-          <li active>Object Detection Setting</li>
-          <li>Global Setting</li>
-          <li>Calibration Operation</li>
+          <li ?active=${this.current == 'global-setting'}>Global Setting</li>
+          <li ?active=${this.current == 'object-detection-setting'}>Object Detection Setting</li>
+          <li ?active=${this.current == 'frame-name-setting'}>Global Setting</li>
+          <li ?active=${this.current == 'operation'}>Calibration Operation</li>
         </ol>
       </wizard-summary>
 
-      <wizard-view>
+      <wizard-view @change=${e => (this.current = e.detail.active?.getAttribute('name'))}>
         <handeye-calib-global-setting name="global-setting"></handeye-calib-global-setting>
         <handeye-calib-object-detection-setting
           name="object-detection-setting"
