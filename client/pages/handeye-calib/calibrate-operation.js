@@ -46,7 +46,7 @@ class HandEyeCalibrationOperation extends connect(store)(LitElement) {
 
   render() {
     return html`
-      <h3>object detection setting</h3>
+      <h3>Calibration Operation</h3>
 
       <div action>
         <mwc-button label="Take Snapshot" icon="wallpaper"></mwc-button>

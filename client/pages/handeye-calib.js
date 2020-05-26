@@ -97,25 +97,17 @@ class HandEyeCalibration extends connect(store)(PageView) {
           <li>Global Setting</li>
           <li active>Object Detection Setting</li>
           <li>Global Setting</li>
-          <li>Object Detection Setting</li>
+          <li>Calibration Operation</li>
         </ol>
       </wizard-summary>
 
       <wizard-view>
-        <handeye-calib-global-setting name="global-setting" title="Global Setting"></handeye-calib-global-setting>
+        <handeye-calib-global-setting name="global-setting"></handeye-calib-global-setting>
         <handeye-calib-object-detection-setting
           name="object-detection-setting"
-          title="Object Detection Setting"
         ></handeye-calib-object-detection-setting>
-        <handeye-calib-frame-name-setting
-          name="frame-name-setting"
-          title="Frame Name Setting"
-        ></handeye-calib-frame-name-setting>
-        <handeye-calib-operation
-          name="operation"
-          title="Calibration Operation"
-          .done=${() => this.done()}
-        ></handeye-calib-operation>
+        <handeye-calib-frame-name-setting name="frame-name-setting"></handeye-calib-frame-name-setting>
+        <handeye-calib-operation name="operation" .done=${() => this.done()}></handeye-calib-operation>
       </wizard-view>
     `
   }
