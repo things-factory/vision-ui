@@ -10,9 +10,30 @@ class HandEyeCalibrationOperation extends connect(store)(LitElement) {
         display: flex;
         flex-direction: column;
       }
-
+      h3 {
+        margin: 0;
+        color: var(--wizard-headline-color, #6e7ebd);
+        text-transform: capitalize;
+      }
+      div {
+        margin: var(--wizard-view-item-margin, 10px 0);
+        padding: var(--wizard-view-item-padding, 5px 0);
+        font-size: var(--wizard-view-font-size-default, 14px);
+        color: var(--wizard-view-font-color, #4c526b);
+      }
+      mwc-button {
+        --mdc-theme-primary: #fff;
+        background-color: var(--wizard-view-button-background-color, #4c567f);
+        margin: var(--wizard-view-button-margin, 10px 10px 10px 0);
+        padding: var(--wizard-view-button-padding, 0px 5px);
+        border-radius: var(--wizard-view-button-radius, 5px);
+      }
+      mwc-button:hover {
+        background-color: var(--wizard-view-button-hover-background-color, #6e7ebd);
+      }
       img {
         flex: 1;
+        margin: var(--wizard-view-item-margin, 10px 0);
       }
     `
   }
@@ -28,10 +49,10 @@ class HandEyeCalibrationOperation extends connect(store)(LitElement) {
       <h3>object detection setting</h3>
 
       <div action>
-        <mwc-button label="Take Snapshot"></mwc-button>
-        <mwc-button label="Reset"></mwc-button>
-        <mwc-button label="Compute"></mwc-button>
-        <mwc-button label="Publish"></mwc-button>
+        <mwc-button label="Take Snapshot" icon="wallpaper"></mwc-button>
+        <mwc-button label="Reset" icon="flip_camera_android"></mwc-button>
+        <mwc-button label="Compute" icon="exposure"></mwc-button>
+        <mwc-button label="Publish" icon="publish"></mwc-button>
       </div>
 
       <img

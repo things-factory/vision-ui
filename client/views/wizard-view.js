@@ -18,6 +18,13 @@ export class WizardView extends localize(i18next)(LitElement) {
         display: initial;
         flex: 1;
       }
+
+      [buttons] {
+        text-align: right;
+      }
+      [buttons] mwc-button {
+        margin-left: 10px;
+      }
     `
   }
 
